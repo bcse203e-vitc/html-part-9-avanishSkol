@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Appointment Booking</title>
+  <link rel="stylesheet" href="bkaptcss.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Welcome to Our Service Portal</h1>
+      <p>Your one-stop solution for all your service needs.</p>
+    </div>
+  </header>
+
+  <!-- Service List Section -->
+  <section class="services">
+    <div class="container">
+      <h2>Our Available Services</h2>
+      <div class="service-list">
+        <div class="service-item">
+          <h3>Doctor Consultation</h3>
+          <p>Get online consultation with experienced doctors.</p>
+          <button onclick="openBookingForm('Doctor Consultation')">Book Appointment</button>
+        </div>
+        <div class="service-item">
+          <h3>Salon Booking</h3>
+          <p>Book a salon appointment for your beauty needs.</p>
+          <button onclick="openBookingForm('Salon Booking')">Book Appointment</button>
+        </div>
+        <div class="service-item">
+          <h3>Car Service</h3>
+          <p>Get your car serviced with professional care.</p>
+          <button onclick="openBookingForm('Car Service')">Book Appointment</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment Form Modal -->
+  <div id="bookingModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeBookingForm()">×</span>
+      <h2>Book an Appointment</h2>
+      <form id="bookingForm" onsubmit="submitForm(event)">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+        <span id="nameError" class="error-msg"></span>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="emailError" class="error-msg"></span>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" maxlength="10" required>
+        <span id="phoneError" class="error-msg"></span>
+
+        <label for="service">Select Service:</label>
+        <select id="service" name="service" required>
+          <option value="Doctor Consultation">Doctor Consultation</option>
+          <option value="Salon Booking">Salon Booking</option>
+          <option value="Car Service">Car Service</option>
+        </select>
+
+        <label for="datetime">Preferred Date & Time:</label>
+        <input type="datetime-local" id="datetime" name="datetime" required>
+
+        <label for="specialRequests">Special Requests:</label>
+        <textarea id="specialRequests" name="specialRequests"></textarea>
+
+        <label>
+          <input type="checkbox" id="terms" required> I agree to the terms and conditions
+        </label>
+        <span id="termsError" class="error-msg"></span>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Booked Appointments Table -->
+  <section class="appointments">
+    <div class="container">
+      <h2>Booked Appointments</h2>
+      <table id="appointmentsTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Date & Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="appointmentsList"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Service Portal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
